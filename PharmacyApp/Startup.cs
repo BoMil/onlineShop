@@ -52,7 +52,12 @@ namespace PharmacyApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseCors(builder =>
+                builder
+                .WithOrigins("http://localhost")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials());
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -69,7 +74,7 @@ namespace PharmacyApp
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start");
+                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
         }
