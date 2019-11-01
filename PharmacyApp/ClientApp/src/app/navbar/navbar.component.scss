@@ -1,0 +1,52 @@
+.navbar-container {
+    ul {
+        .nav-item {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            color: #32b300;
+
+            &.float-right {
+                float: right;
+            }
+
+            &:hover {
+                color: #1c2aff;
+            }
+        }
+    }
+
+    .main-nav-container {
+        display: grid;
+        grid-template-columns: 50px 130px auto 20%;
+
+        .app-title {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        ul {
+            text-align: right;
+        }
+
+        .basket-box {
+            text-align: center;
+            margin: 25px 0px;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .second-menu {
+        ul {
+            padding: 10px 0px;
+            margin: 0px 0px 10px;
+            border-bottom: 1px solid #32b300;
+            border-top: 1px solid #32b300;
+            background-color: rgba(0, 179, 85, 0.15);
+        }
+    }
+}
