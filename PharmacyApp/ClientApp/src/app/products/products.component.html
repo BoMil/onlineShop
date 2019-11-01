@@ -1,3 +1,21 @@
-<p>
-  products works!
-</p>
+<div class="products-main-container">
+    <div class="navbar-container">
+        <ul>
+            <li *ngFor="let category of allCategories; let i = index">
+                <div class="icon-name">
+                    <svg-icon icon="{{categoryIcons[i]}}" class="icon"></svg-icon>
+                    {{category.CategoryName}}
+                </div>
+
+                <ul>
+                    <li *ngFor="let subcategory of category.Subcategories">
+                        <div class="icon-name">
+                            {{subcategory.SubcategoryName}}
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="content-container"></div>
+</div>
