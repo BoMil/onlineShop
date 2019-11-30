@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+    // View control variables
+    isHomeSelected = false;
+    isProductsSelected = false;
+    isContactSeleceted = false;
 
-  ngOnInit() {
-  }
+    constructor(private router: Router) { }
 
+    ngOnInit() {
+        // Open Products initialy
+        this.router.navigateByUrl('/products');
+        this.isProductsSelected = true;
+    }
+
+    resetControlViewVariables() {
+        this.isHomeSelected = false;
+        this.isProductsSelected = false;
+        this.isContactSeleceted = false;
+    }
 }

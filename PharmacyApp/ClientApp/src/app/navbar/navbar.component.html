@@ -15,9 +15,9 @@
     <div class="second-menu">
         <nav>
             <ul>
-                <li class="nav-item"  routerLink="/products">PRODUCTS</li>
-                <li class="nav-item">HOME</li>
-                <li class="nav-item float-right">CONTACT</li>
+                <li class="nav-item" [class.selected]="isProductsSelected" routerLink="/products" (click)="resetControlViewVariables(); isProductsSelected = true">PRODUCTS</li>
+                <li class="nav-item" [class.selected]="isHomeSelected"  (click)="resetControlViewVariables(); isHomeSelected = true">HOME</li>
+                <li class="nav-item float-right" [class.selected]="isContactSeleceted"  (click)="resetControlViewVariables(); isContactSeleceted = true">CONTACT</li>
             </ul>
         </nav>
     </div>

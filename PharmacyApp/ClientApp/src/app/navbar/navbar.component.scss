@@ -3,15 +3,31 @@
         .nav-item {
             display: inline-block;
             cursor: pointer;
-            padding: 10px;
-            color: #32b300;
+            padding: 15px 10px;
+            color: black;
 
             &.float-right {
                 float: right;
             }
 
+            &.selected  {
+                background-color: #ffff;
+                border-left: 1px solid #32b300;
+                border-right: 1px solid #32b300;
+                color: #32b300;
+                outline: none;
+
+                &:first-child {
+                    border-left: unset;
+                }
+
+                &:last-child {
+                    border-right: unset;
+                }
+            }
+
             &:hover {
-                color: #1c2aff;
+                color: #32b300;
             }
         }
     }
@@ -42,11 +58,10 @@
 
     .second-menu {
         ul {
-            padding: 10px 0px;
             margin: 0px 0px 0px;
-            border-bottom: 1px solid #32b300;
-            border-top: 1px solid #32b300;
+            border: 1px solid #32b300;
             background-color: rgba(0, 179, 85, 0.15);
+            padding-left: 0px;
         }
     }
 }
