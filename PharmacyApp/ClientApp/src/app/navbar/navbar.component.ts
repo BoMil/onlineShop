@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Popover } from '../popover/popover.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,9 @@ export class NavbarComponent implements OnInit {
     isProductsSelected = false;
     isContactSeleceted = false;
 
-    constructor(private router: Router) { }
+    constructor(
+        private router: Router,
+        private popper: Popover) { }
 
     ngOnInit() {
         // Open Products initialy
@@ -25,5 +28,26 @@ export class NavbarComponent implements OnInit {
         this.isHomeSelected = false;
         this.isProductsSelected = false;
         this.isContactSeleceted = false;
+    }
+
+    /*
+      * This is a method for popover, it will be used later
+    */
+    show(content: TemplateRef<any>, origin) {
+        const ref = this.popper.open<{ skills: number[] }>({
+          content,
+          //  content: 'Hello world!',
+          // content: InsidePopoverComponent,
+          origin,
+          width: 'auto',
+          data: {
+            skills: [1, 2, 3]
+          }
+        });
+
+        ref.afterClosed$.subscribe(res => {
+            console.log(res);
+        });
+
     }
 }

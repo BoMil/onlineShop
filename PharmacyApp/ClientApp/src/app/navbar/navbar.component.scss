@@ -1,4 +1,6 @@
 .navbar-container {
+    color: var(--text-on-primary);
+
     ul {
         .nav-item {
             display: inline-block;
@@ -10,11 +12,16 @@
                 float: right;
             }
 
+            &.header {
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+
             &.selected  {
                 background-color: #ffff;
-                border-left: 1px solid #32b300;
-                border-right: 1px solid #32b300;
-                color: #32b300;
+                border-left: 1px solid var(--primary-dark);
+                border-right: 1px solid var(--primary-dark);
                 outline: none;
 
                 &:first-child {
@@ -24,10 +31,14 @@
                 &:last-child {
                     border-right: unset;
                 }
+
+                &:hover {
+                    color: var(--primary-color);
+                }
             }
 
             &:hover {
-                color: #32b300;
+                color: #ffff;;
             }
         }
     }
@@ -59,8 +70,9 @@
     .second-menu {
         ul {
             margin: 0px 0px 0px;
-            border: 1px solid #32b300;
-            background-color: rgba(0, 179, 85, 0.15);
+            // background-color: rgba(0, 179, 85, 0.15);
+            border: 1px solid var(--primary-dark);
+            background-color: var(--primary-color);
             padding-left: 0px;
         }
     }

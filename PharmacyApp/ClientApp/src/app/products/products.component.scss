@@ -7,7 +7,19 @@
         padding-left: 0px;
         font-size: 22px;
 
-        li {
+        .icon-name {
+            .icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            &:hover {
+                fill: var(--primary-color);
+                color: var(--primary-color);
+            }
+        }
+
+        .menu-item {
             list-style-type: none;
             cursor: pointer;
 
@@ -18,20 +30,24 @@
         }
     }
     .navbar-container {
-        background-color: rgba(0, 179, 85, 0.07);
+        background-color: rgba(207, 255, 148, 0.43);
         padding-left: 10px;
 
-        .icon-name {
-            .icon {
-                width: 30px;
-                height: 30px;
-            }
+        .category-name { }
 
-            &:hover {
-                color: #32b300;
-                fill: #32b300;
-            }
-        }
+        .sucategory-name { }
+
+        // .icon-name {
+        //     .icon {
+        //         width: 30px;
+        //         height: 30px;
+        //     }
+
+        //     &:hover {
+        //         fill: var(--secondary-dark);
+        //         color: var(--secondary-dark);
+        //     }
+        // }
     }
 
     .content-container {}
