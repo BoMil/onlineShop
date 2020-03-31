@@ -1,20 +1,20 @@
-npm <div class="navbar-container">
+<div class="navbar-container">
     <div class="main-nav-container">
         <div class="logo-container">
             <svg-icon icon="icon-cubies_aid" class="icon"></svg-icon>
         </div>
         <span class="app-title">Pharmacy store</span>
         <nav>
-            <ul>
+            <ul class="nav-list">
                 <li class="nav-item header" awesomeTooltip="Hello World!">LOGIN</li>
                 <li class="nav-item header">REGISTER</li>
             </ul>
         </nav>
         <div class="basket-box">This is where basket goes</div>
     </div>
-    <div class="second-menu">
+    <div class="secondary-nav-container">
         <nav>
-            <ul>
+            <ul class="nav-list">
                 <li class="nav-item"  [class.selected]="isProductsSelected" routerLink="/products" (click)="resetControlViewVariables(); isProductsSelected = true;">PRODUCTS</li>
                 <li class="nav-item" [class.selected]="isHomeSelected"  (click)="resetControlViewVariables(); isHomeSelected = true">HOME</li>
                 <li class="nav-item float-right" [class.selected]="isContactSeleceted"  (click)="resetControlViewVariables(); isContactSeleceted = true">CONTACT</li>

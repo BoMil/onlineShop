@@ -1,8 +1,9 @@
 .products-main-container {
     display: grid;
     grid-template-columns: 25% 75%;
+    background-color: var(--content-background);
 
-    ul {
+    .category-list {
         list-style: none;
         padding-left: 0px;
         font-size: 22px;
@@ -23,13 +24,13 @@
             list-style-type: none;
             cursor: pointer;
 
-            ul {
+            .subcategory-list {
                 padding-left: 10px;
                 font-size: 20px;
             }
         }
     }
-    .navbar-container {
+    .sidebar-menu {
         background-color: rgba(207, 255, 148, 0.43);
         padding-left: 10px;
 

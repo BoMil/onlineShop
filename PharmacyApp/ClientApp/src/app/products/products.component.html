@@ -1,13 +1,13 @@
 <div class="products-main-container">
-    <div class="navbar-container">
-        <ul>
+    <div class="sidebar-menu">
+        <ul class="category-list">
             <li class="menu-item category-name" *ngFor="let category of allCategories; let i = index">
                 <div class="icon-name">
                     <svg-icon icon="{{categoryIcons[i]}}" class="icon"></svg-icon>
                     {{category.CategoryName}}
                 </div>
 
-                <ul>
+                <ul class="subcategory-list">
                     <li class="menu-item subcategory-name" *ngFor="let subcategory of category.Subcategories">
                         <div class="icon-name">
                             {{subcategory.SubcategoryName}}

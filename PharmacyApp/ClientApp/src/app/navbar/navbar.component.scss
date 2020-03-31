@@ -1,12 +1,9 @@
 .navbar-container {
-    color: var(--text-on-primary);
-
-    ul {
+    .nav-list {
         .nav-item {
             display: inline-block;
             cursor: pointer;
             padding: 15px 10px;
-            color: black;
 
             &.float-right {
                 float: right;
@@ -20,6 +17,7 @@
 
             &.selected  {
                 background-color: #ffff;
+                color: var(--primary-color);
                 border-left: 1px solid var(--primary-dark);
                 border-right: 1px solid var(--primary-dark);
                 outline: none;
@@ -67,10 +65,9 @@
         }
     }
 
-    .second-menu {
-        ul {
+    .secondary-nav-container {
+        .nav-list {
             margin: 0px 0px 0px;
-            // background-color: rgba(0, 179, 85, 0.15);
             border: 1px solid var(--primary-dark);
             background-color: var(--primary-color);
             padding-left: 0px;
