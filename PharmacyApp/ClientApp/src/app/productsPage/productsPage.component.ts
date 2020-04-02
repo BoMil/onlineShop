@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  templateUrl: './productsPage.component.html',
+  styleUrls: ['./productsPage.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsPageComponent implements OnInit {
     allCategories = [
         {
             CategoryId: 0,

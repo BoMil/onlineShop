@@ -7,10 +7,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SvgIconComponent } from './svg-icon/svg-icon.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsPageComponent } from './productsPage/productsPage.component';
 import { PopoverComponent } from './popover/popover.component';
 import { AwesomeTooltipComponent } from './tooltip/tooltip.component';
 import { AwesomeTooltipDirective } from './tooltip/tooltip.directive';
+import { ProductCardComponent } from './productCard/productCard.component';
 
 
 // Routes setup
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
     // { path: 'login', component: LoginComponent },
     // { path: 'register', component: RegisterComponent },
     // // Routes that are protected
-    { path: 'products', component: ProductsComponent },
+    { path: 'products', component: ProductsPageComponent },
     // { path: 'tables', component: TablesComponent, canActivate: [AuthGuard] },
     // { path: 'settings', component: UserSettingsComponent, canActivate: [AuthGuard] },
 
@@ -31,10 +32,11 @@ const appRoutes: Routes = [
     AppComponent,
     SvgIconComponent,
     NavbarComponent,
-    ProductsComponent,
+    ProductsPageComponent,
     PopoverComponent,
     AwesomeTooltipComponent,
-    AwesomeTooltipDirective
+    AwesomeTooltipDirective,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

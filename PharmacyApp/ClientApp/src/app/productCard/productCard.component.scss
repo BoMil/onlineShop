@@ -1,0 +1,98 @@
+.outer-container {
+    position: relative;
+    height: 450px;
+    display: inline-block;
+
+    .product-card-container {
+        width: 265px;
+        height: 450px;
+        position: relative;
+        cursor: pointer;
+        margin: 10px 12px;
+        bottom: 0px;
+        background-color: #ffff;
+        transition: 1s;
+
+        &:hover {
+            height: 495px;
+            bottom: 45px;
+
+            .details-section {
+                opacity: 1;
+                bottom: 0px;
+            }
+        }
+
+        .image-section {
+            height: 265px;
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 34px 0px;
+            font-size: 20px;
+            color: var(--light-grey);
+        }
+
+        .price-section {
+            text-align: center;
+            padding: 12px 0px;
+            font-size: 28px;
+            color: var(--light-blue-primary);
+        }
+
+        .details-section {
+            position: absolute;
+            bottom: -45px;
+            height: 45px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto auto 50%;
+            opacity: 0;
+            transition: 1s;
+
+            .icon-box {
+                text-align: center;
+                fill: #ffff;
+                color: #fff;
+
+                .icon {
+                    height: 20px;
+                    width: 20px;
+                    vertical-align: middle;
+                    margin-top: 12px;
+                }
+
+                &.expand {
+                    background-color: var(--light-blue-secondary);
+                }
+
+                &.heart {
+                    background-color: var(--light-blue-terciary);
+                }
+
+                &.cart {
+                    background-color: var(--light-blue-primary);
+                }
+
+                &:hover {
+                    background-color: var(--light-grey);
+
+                }
+            }
+
+            .action-button {
+                background-color: var(--primary-color);
+                border: none;
+                font-size: 20px;
+                color: #fff;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--light-grey);
+                }
+            }
+        }
+    }
+
+}
