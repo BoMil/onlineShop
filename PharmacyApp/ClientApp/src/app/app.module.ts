@@ -12,6 +12,7 @@ import { PopoverComponent } from './popover/popover.component';
 import { AwesomeTooltipComponent } from './tooltip/tooltip.component';
 import { AwesomeTooltipDirective } from './tooltip/tooltip.directive';
 import { ProductCardComponent } from './productCard/productCard.component';
+import { HomePageComponent } from './homePage/homePage.component';
 
 
 // Routes setup
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     // { path: 'register', component: RegisterComponent },
     // // Routes that are protected
     { path: 'products', component: ProductsPageComponent },
+    { path: 'home', component: HomePageComponent },
     // { path: 'tables', component: TablesComponent, canActivate: [AuthGuard] },
     // { path: 'settings', component: UserSettingsComponent, canActivate: [AuthGuard] },
 
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     PopoverComponent,
     AwesomeTooltipComponent,
     AwesomeTooltipDirective,
-    ProductCardComponent
+    ProductCardComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

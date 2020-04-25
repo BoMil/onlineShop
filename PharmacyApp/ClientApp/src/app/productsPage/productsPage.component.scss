@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 25% 75%;
     background-color: var(--content-background);
+    height: 100%;
 
     .category-list {
         list-style: none;
