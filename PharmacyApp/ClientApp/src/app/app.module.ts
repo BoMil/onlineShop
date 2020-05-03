@@ -13,6 +13,7 @@ import { AwesomeTooltipComponent } from './tooltip/tooltip.component';
 import { AwesomeTooltipDirective } from './tooltip/tooltip.directive';
 import { ProductCardComponent } from './productCard/productCard.component';
 import { HomePageComponent } from './homePage/homePage.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 
 // Routes setup
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     AwesomeTooltipComponent,
     AwesomeTooltipDirective,
     ProductCardComponent,
-    HomePageComponent
+    HomePageComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
