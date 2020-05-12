@@ -1,0 +1,112 @@
+.home-page-container {
+
+    .section-title {
+        font-size: 20px;
+        text-align: center;
+        background-color: var(--content-background);
+        padding: 2%;
+        color: var(--primary-color);
+        letter-spacing: 1.2px;
+        cursor: pointer;
+
+        .dots {
+            font-size: 30px;
+            margin-left: 10px;
+        }
+
+        .icon-box {
+            text-align: center;
+            fill: var(--primary-color);
+            color: var(--primary-color);
+            margin-right: 10px;
+
+            .icon {
+                height: 30px;
+                width: 30px;
+                vertical-align: middle;
+                margin-bottom: 8px;
+            }
+        }
+
+        &:hover {
+            background-color: #ffff;
+        }
+    }
+    .parallax-container {
+
+        height: 0px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        visibility: hidden;
+        transition: all 400ms;
+
+        &.visible {
+            background-image: url('../../assets/other-imgs/adult-doctor-girl-healthcare.jpg');
+            height: 400px;
+            visibility: visible;
+        }
+
+        .content-box {
+            display: flex;
+            padding-top: 140px;
+            padding-left: 5%;
+            visibility: hidden;
+            transition: all 100ms;
+
+            &.visible {
+                visibility: visible;
+            }
+
+            .box-item {
+                background-color: var(--light-green);
+                width: 280px;
+                display: inline-block;
+                margin-right: 10px;
+                font-size: 13px;
+                padding: 20px;
+                text-align: center;
+                font-style: italic;
+                white-space: break-spaces;
+                border-radius: 6px;
+                line-height: 16px;
+
+                .author {
+                    font-style: normal;
+                    font-weight: 500;
+                    color: var(--primary-color);
+                }
+
+                .text-area {
+                    display: inline-block;
+                }
+
+                .quater-marks {
+                    font-size: 36px;
+                    display: inline-block;
+                    color: var(--primary-color);
+                    font-family: "Oswald", sans-serif;
+                    position: relative;
+                    line-height: normal;
+
+                    .mark {
+                        position: absolute;
+                        line-height: 15px;
+
+                        &.opening {
+                            top: -28px;
+                            left: -18px;
+                        }
+
+                        &.closing {
+                            bottom: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

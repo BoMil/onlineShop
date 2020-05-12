@@ -19,6 +19,11 @@ export class HomePageComponent implements OnInit {
         { image: '../../assets/imgs/medication-pills-isolated-on-yellow-background.jpg' },
     ];
 
+    /**
+    *   Determine if section with user recensions is visible or not
+    */
+    isParalaxVisible = false;
+
     constructor() { }
 
     ngOnInit() {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+// https://medium.com/@rubenvermeulen/using-an-svg-sprite-icon-system-in-angular-9d4056357b60
+// https://icomoon.io/app/#/select
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'svg-icon',

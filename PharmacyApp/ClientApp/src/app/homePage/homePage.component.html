@@ -1,3 +1,37 @@
-<!-- <div class="carousel-container"> -->
-    <carousel [slides]="slidesData" [autoChangeOn]="true" [timeDelayInMs]="6000"></carousel>
-<!-- </div> -->
+<div class="home-page-container">
+    <carousel [slides]="slidesData" [autoChangeOn]="false" [timeDelayInMs]="6000"></carousel>
+
+    <div class="section-title" (click)="isParalaxVisible = !isParalaxVisible">
+        <span class="icon-box"><svg-icon icon="icon-heart" class="icon"></svg-icon></span>
+        What others said about us<span class="dots">...</span>
+    </div>
+
+    <div class="parallax-container" [class.visible]="isParalaxVisible">
+        <div class="content-box" [class.visible]="isParalaxVisible">
+            <div class="box-item">
+                <span class="quater-marks"><span class="mark opening">,,</span></span>this is some text
+                <span class="quater-marks"><span class="mark closing">,,</span></span>
+                <div class="author">Billy Doe</div>
+            </div>
+            <div class="box-item">
+                <span class="quater-marks"><span class="mark opening">,,</span></span>Content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved.
+                <span class="quater-marks"><span class="mark closing">,,</span></span>
+                <div class="author">John White</div>
+            </div>
+            <div class="box-item">
+                <span class="quater-marks"><span class="mark opening">,,</span></span>Content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved.
+                <span class="quater-marks"><span class="mark closing">,,</span></span>
+                <div class="author">John Black</div>
+            </div>
+            <div class="box-item">
+                <span class="quater-marks"><span class="mark opening">,,</span></span>Content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved.
+                <span class="quater-marks"><span class="mark closing">,,</span></span>
+                <div class="author">Susan Doe</div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+       <!-- <app-products></app-products> -->
+    </div>
+</div>
