@@ -1,0 +1,20 @@
+<div class="product-slider-container">
+    <div class="slider-header">
+        <span class="icon-box"><svg-icon icon="icon-star-full" class="icon"></svg-icon></span>
+        Featured products
+    </div>
+    <div class="slider-body">
+        <div [ngStyle]="sliderEntityWidth" *ngFor="let entity of sliderEntities; let i = index" class="slider-item">
+            <!-- <span>{{i}}</span> -->
+            <product-card></product-card>
+        </div>
+
+
+        <button class="control prev" (click)="onPreviousClick()">
+            <span class="arrow light-blue left"></span>
+        </button>
+        <button class="control next" (click)="onNextClick()">
+            <span class="arrow light-blue right"></span>
+        </button>
+    </div>
+</div>

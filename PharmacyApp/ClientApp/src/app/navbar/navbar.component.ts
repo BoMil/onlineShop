@@ -20,8 +20,8 @@ export class NavbarComponent implements OnInit {
 
     ngOnInit() {
         // Open Products initialy
-        this.router.navigateByUrl('/products');
-        this.isProductsSelected = true;
+        this.router.navigateByUrl('/home');
+        this.isHomeSelected = true;
     }
 
     resetControlViewVariables() {

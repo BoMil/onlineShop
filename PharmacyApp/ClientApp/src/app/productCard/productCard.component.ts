@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,6 +14,8 @@ export class ProductCardComponent implements OnInit {
         mainPrice: null,
         priceDecimal: null
     };
+
+    @Input() allowHoverEffect: boolean;
 
     constructor() { }
 

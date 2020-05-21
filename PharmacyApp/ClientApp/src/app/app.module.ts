@@ -14,6 +14,7 @@ import { AwesomeTooltipDirective } from './tooltip/tooltip.directive';
 import { ProductCardComponent } from './productCard/productCard.component';
 import { HomePageComponent } from './homePage/homePage.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { ProductSliderComponent } from './productSlider/productSlider.component';
 
 
 // Routes setup
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     AwesomeTooltipDirective,
     ProductCardComponent,
     HomePageComponent,
-    CarouselComponent
+    CarouselComponent,
+    ProductSliderComponent
   ],
   imports: [
     BrowserModule,

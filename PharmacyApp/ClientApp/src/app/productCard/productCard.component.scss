@@ -3,6 +3,10 @@
     height: 450px;
     display: inline-block;
 
+    &.border-right {
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
     .product-card-container {
         width: 265px;
         height: 450px;
@@ -13,19 +17,22 @@
         background-color: #ffff;
         transition: 1s;
 
-        &:hover {
-            height: 495px;
-            bottom: 45px;
+        &.allow-hover {
+            &:hover {
+                height: 495px;
+                bottom: 45px;
 
-            .details-section {
-                opacity: 1;
-                bottom: 0px;
-            }
+                .details-section {
+                    opacity: 1;
+                    bottom: 0px;
+                }
 
-            .price-section {
-                background-color: var(--light-green);
+                .price-section {
+                    background-color: var(--light-green);
+                }
             }
         }
+
 
         .image-section {
             height: 265px;

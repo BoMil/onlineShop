@@ -1,5 +1,5 @@
-<div class="outer-container">
-    <div class="product-card-container">
+<div class="outer-container" [class.border-right]="!allowHoverEffect">
+    <div class="product-card-container" [class.allow-hover]="allowHoverEffect">
         <section class="image-section">
             <svg-icon icon="icon-blueprint_medicate" class="icon"></svg-icon>
         </section>
