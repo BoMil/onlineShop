@@ -15,6 +15,7 @@ import { ProductCardComponent } from './productCard/productCard.component';
 import { HomePageComponent } from './homePage/homePage.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductSliderComponent } from './productSlider/productSlider.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 // Routes setup
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     ProductCardComponent,
     HomePageComponent,
     CarouselComponent,
-    ProductSliderComponent
+    ProductSliderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
