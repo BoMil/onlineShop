@@ -17,6 +17,10 @@
             <ul class="nav-list">
                 <li class="nav-item" routerLink="/products" [class.selected]="isProductsSelected" (click)="resetControlViewVariables(); isProductsSelected = true;">PRODUCTS</li>
                 <li class="nav-item" routerLink="/home" [class.selected]="isHomeSelected"  (click)="resetControlViewVariables(); isHomeSelected = true">HOME</li>
+
+                <!-- target="_blank" means open in new window -->
+                <li *ngIf="hasAdminPermission" class="nav-item float-right" [class.selected]="isAdminSeleceted" routerLink="/admin" target="_blank" (click)="resetControlViewVariables(); isAdminSeleceted = true">ADMIN PANEL</li>
+
                 <li class="nav-item float-right" [class.selected]="isContactSeleceted"  (click)="resetControlViewVariables(); isContactSeleceted = true">CONTACT</li>
             </ul>
         </nav>

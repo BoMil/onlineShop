@@ -46,7 +46,8 @@
         transition: all 400ms;
 
         &.visible {
-            background-image: url('../../assets/other-imgs/adult-doctor-girl-healthcare.jpg');
+            //C:\Users\pc\Desktop\onlineShop\PharmacyApp\ClientApp\src\assets\other-imgs\adult-doctor-girl-healthcare.jpg
+            background-image: url('../../../assets/other-imgs/adult-doctor-girl-healthcare.jpg');
             height: 400px;
             visibility: visible;
         }

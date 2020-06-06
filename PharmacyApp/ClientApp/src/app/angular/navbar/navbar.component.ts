@@ -13,6 +13,10 @@ export class NavbarComponent implements OnInit {
     isHomeSelected = false;
     isProductsSelected = false;
     isContactSeleceted = false;
+    isAdminSeleceted = false;
+
+    // TODO This will be changed after we add a backend support
+    hasAdminPermission = true;
 
     constructor(
         private router: Router,
@@ -28,6 +32,7 @@ export class NavbarComponent implements OnInit {
         this.isHomeSelected = false;
         this.isProductsSelected = false;
         this.isContactSeleceted = false;
+        this.isAdminSeleceted = false;
     }
 
     /*

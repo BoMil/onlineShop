@@ -16,6 +16,8 @@ import { HomePageComponent } from './homePage/homePage.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductSliderComponent } from './productSlider/productSlider.component';
 import { FooterComponent } from './footer/footer.component';
+import { ReactBidirectionalRendererComponent } from './react-bidirectional-renderer/react-bidirectional-renderer.component';
+
 
 
 // Routes setup
@@ -25,6 +27,7 @@ const appRoutes: Routes = [
     // // Routes that are protected
     { path: 'products', component: ProductsPageComponent },
     { path: 'home', component: HomePageComponent },
+    { path: 'admin', component: ReactBidirectionalRendererComponent },
     // { path: 'tables', component: TablesComponent, canActivate: [AuthGuard] },
     // { path: 'settings', component: UserSettingsComponent, canActivate: [AuthGuard] },
 
@@ -45,7 +48,8 @@ const appRoutes: Routes = [
     HomePageComponent,
     CarouselComponent,
     ProductSliderComponent,
-    FooterComponent
+    FooterComponent,
+    ReactBidirectionalRendererComponent
   ],
   imports: [
     BrowserModule,

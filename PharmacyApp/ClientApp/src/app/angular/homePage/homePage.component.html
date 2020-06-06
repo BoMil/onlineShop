@@ -1,6 +1,13 @@
 <div class="home-page-container">
     <carousel [slides]="slidesData" [autoChangeOn]="false" [timeDelayInMs]="6000"></carousel>
 
+    <!-- <div>
+        <span>ng-hero works!</span><br/>
+        <span *ngFor="let hero of heroes; let i = index;">{{hero.name}} - {{hero.age}} - <button (click)="addAge(i)">Add {{hero.name}} age</button><br/></span>
+        <br/>
+        <button (click)="addHero()">ADD AFRODITA</button>
+    </div> -->
+
     <div class="section-title" (click)="isParalaxVisible = !isParalaxVisible">
         <span class="icon-box"><svg-icon icon="icon-heart" class="icon"></svg-icon></span>
         What others said about us<span class="dots">...</span>
@@ -30,6 +37,9 @@
             </div>
         </div>
     </div>
+
+    <!-- With bidirectional data binding-->
+    <!-- <app-react-owc-renderer [heroes$]="heroesObj$"></app-react-owc-renderer> -->
 
     <div>
        <product-slider [sliderEntities]="slidesData" ></product-slider>
