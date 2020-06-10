@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { IHero } from '../model/hero';
-import { HeroService } from './hero.service';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +7,9 @@ import { HeroService } from './hero.service';
 })
 export class AppComponent implements OnInit {
     title = 'ClientApp';
-    public heroesObj$: BehaviorSubject<IHero[]>;
-    public heroes: IHero[];
 
-    constructor(private heroService: HeroService) {}
+    constructor() {}
 
-    ngOnInit(): void {
+    ngOnInit(): void { }
 
-        // this.heroService.getHeroes$().subscribe((res: IHero[]) => {
-        //     this.heroes = res;
-        // });
-
-        // this.heroesObj$ = this.heroService.getHeroes$();
-        // this.initHeroes();
-    }
-
-    initHeroes() {
-        this.heroService.addHeroes({name: 'Zeus', age: 88});
-        this.heroService.addHeroes({name: 'Poseidon', age: 46});
-    }
 }

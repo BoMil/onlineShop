@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ICarouselItem } from '../_interfaces/carouselItem';
-import { IHero } from 'src/app/model/hero';
-import { HeroService } from '../hero.service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,8 +8,6 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./homePage.component.scss']
 })
 export class HomePageComponent implements OnInit {
-    public heroes: IHero[];
-    public heroesObj$: BehaviorSubject<IHero[]>;
 
     slidesData: ICarouselItem[] = [
         { image: '../../assets/imgs/blur-box-capsules.jpg', description: 'This is description 1' },
@@ -29,26 +24,7 @@ export class HomePageComponent implements OnInit {
     */
     isParalaxVisible = false;
 
-    constructor(private heroService: HeroService) { }
+    constructor() { }
 
-    ngOnInit() {
-        this.heroService.getHeroes$().subscribe((res: IHero[]) => {
-            this.heroes = res;
-        });
-        this.heroesObj$ = this.heroService.getHeroes$();
-        this.initHeroes();
-    }
-
-    addAge(heroId: number) {
-        this.heroService.updateHeroAge(heroId, this.heroes[heroId].age + 1);
-    }
-
-    addHero() {
-        this.heroService.addHeroes({name: 'Afrodita', age: 23});
-    }
-
-    initHeroes() {
-        this.heroService.addHeroes({name: 'Zeus', age: 88});
-        this.heroService.addHeroes({name: 'Poseidon', age: 46});
-    }
+    ngOnInit() { }
 }

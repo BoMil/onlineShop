@@ -1,6 +1,4 @@
 import {Component, Injector, Input, OnInit} from '@angular/core';
-import {IHero} from '../../model/hero';
-import {BehaviorSubject} from 'rxjs';
 import { ReactBidirectionalApplication } from 'src/app/react/react-bidirectional-application';
 
 @Component({
@@ -9,11 +7,10 @@ import { ReactBidirectionalApplication } from 'src/app/react/react-bidirectional
   </div>`
 })
 export class ReactBidirectionalRendererComponent implements OnInit {
-    @Input() heroes$: BehaviorSubject<IHero[]>;
 
     constructor(public injector: Injector) { }
 
     ngOnInit() {
-        ReactBidirectionalApplication.initialize('react-owc-renderer', this.injector, this.heroes$);
+        ReactBidirectionalApplication.initialize('react-owc-renderer', this.injector);
     }
 }
