@@ -1,7 +1,12 @@
 @import "./components/admin-page.scss";
 
 #react-owc-renderer {
-    border: 2px solid dodgerblue;
-    padding: 10px;
+    border: 1px solid #a9a9a93b;
     height: 100%;
+    margin: 5px 0px;
+    border-radius: 6px;
+
+    .renderer {
+        height: 100%;
+    }
 }
