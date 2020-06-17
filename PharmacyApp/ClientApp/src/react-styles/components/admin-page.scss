@@ -1,3 +1,5 @@
+@import "./products-page.scss";
+
 .admin-container {
     color: var(--light-grey);
     display: grid;
@@ -45,11 +47,6 @@
                         transition: all 300ms;
                     }
 
-                    .name {
-                        margin: 0px;
-                        transition: all 300ms;
-                    }
-
                     &.selected {
                         color: var(--primary-color);
 
@@ -77,5 +74,7 @@
 
     }
 
-    .right-section {}
+    .right-section {
+        background-color: var(--light-background);
+    }
 }

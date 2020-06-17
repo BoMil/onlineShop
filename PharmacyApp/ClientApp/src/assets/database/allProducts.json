@@ -1,0 +1,36 @@
+{
+    "allProducts": [
+        {
+            "productId": 0,
+            "categoryName": "Personal care",
+            "subcategoryName": "Skin Care",
+            "productName": "Bio Oil - 200ml",
+            "price": 12,
+            "quantity": 27
+        },
+        {
+            "productId": 1,
+            "categoryName": "Personal care",
+            "subcategoryName": "Hair care",
+            "productName": "Hair 4u Shampoo - 100ml",
+            "price": 29,
+            "quantity": 20
+        },
+        {
+            "productId": 2,
+            "categoryName": "Diabetes care",
+            "subcategoryName": "Diabetic devices",
+            "productName": "Diabetic lab test",
+            "price": 120,
+            "quantity": 12
+        },
+        {
+            "productId": 3,
+            "categoryName": "Diabetes care",
+            "subcategoryName": "Diabetes Food",
+            "productName": "Sugar tablets - 60kom",
+            "price": 54,
+            "quantity": 56
+        }
+    ]
+}

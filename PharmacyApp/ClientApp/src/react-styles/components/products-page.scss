@@ -1,0 +1,42 @@
+.products-page-container {
+    .products-table {
+        border-spacing: 0px 8px;
+        margin: auto;
+
+        .table-header {
+            background-color: var(--light-green);
+            .header-row {
+                .header-item {
+                    padding: 15px 5px;
+                    width: 18%;
+
+                    &:last-child {
+                        width: 10%;
+                    }
+
+                }
+            }
+        }
+
+        .table-body {
+            .body-row {
+                background-color: #ffff;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14), 0 0 40px rgba(0, 0, 0, 0.02) inset;
+
+                .row-item {
+                    font-size: 14px;
+                    font-weight: 400;
+                    padding: 14px 4px;
+
+                    .edit-icon {
+
+                    }
+
+                    .remove-icon {
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "allCategories": [
+        {
+            "CategoryId": 0,
+            "CategoryName": "Dietary supplements",
+            "Subcategories": [
+                {
+                    "SubcategoryId": 10,
+                    "SubcategoryName": "Babies and children",
+                    "ProductCategoryId":0,
+                    "Products":[]
+                }
+            ]
+        }
+    ]
+}
