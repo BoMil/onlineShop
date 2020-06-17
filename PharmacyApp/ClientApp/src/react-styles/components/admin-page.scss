@@ -33,6 +33,10 @@
                     border: 0px;
                     position: relative;
 
+                    i {
+                        margin-right: 10px;
+                    }
+
                     &:after {
                         content: '';
                         display: none;

@@ -19,13 +19,13 @@ class SettingsNavigationBar extends React.Component<Props> {
             <div className='settings-container'>
                 <ul className='settings-menu'>
                     <li className={`settings-item ${this.selectedMenuItem === 'PRODUCTS' ? 'selected' : ''}`}
-                        onClick={() => this.selectMenuItem('PRODUCTS')}>PRODUCTS
+                        onClick={() => this.selectMenuItem('PRODUCTS')}><i className='fas fa-mortar-pestle'></i>PRODUCTS
                     </li>
                     <li className={`settings-item ${this.selectedMenuItem === 'ORDERS' ? 'selected' : ''}`}
-                        onClick={() => this.selectMenuItem('ORDERS')}>ORDERS
+                        onClick={() => this.selectMenuItem('ORDERS')}><i className='fas fa-shopping-cart'></i>ORDERS
                     </li>
                     <li className={`settings-item ${this.selectedMenuItem === 'SETTINGS' ? 'selected' : ''}`}
-                        onClick={() => this.selectMenuItem('SETTINGS')}>SETTINGS
+                        onClick={() => this.selectMenuItem('SETTINGS')}><i className='fas fa-cogs'></i>SETTINGS
                     </li>
                 </ul>
                 <div className='divider'></div>

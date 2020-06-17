@@ -5,6 +5,25 @@ interface Props {
     products: IProduct[];
 }
 
+/**
+ *  It will build a single row in the products table with all data related to product
+ */
+function ProductItem(props) {
+    return (
+        <tr className='body-row' >
+            <th className='row-item'>{props.product.productName}</th>
+            <th className='row-item'>{props.product.categoryName}</th>
+            <th className='row-item'>{props.product.subcategoryName}</th>
+            <th className='row-item'>{props.product.quantity}</th>
+            <th className='row-item'>{props.product.price}</th>
+            <th className='row-item'>
+                <span className='action edit-action'><i className='far fa-edit'></i></span>
+                <span className='action remove-action'><i className='fas fa-trash-alt'></i></span>
+            </th>
+        </tr>
+    );
+}
+
 class ProductsPage extends React.Component<Props> {
 
     render() {
@@ -24,24 +43,11 @@ class ProductsPage extends React.Component<Props> {
                     </thead>
                     <tbody className='table-body'>
                         {
-                            this.props.products.map((product) =>
-                                <tr className='body-row' key={product.productId}>
-                                    <th className='row-item'>{product.productName}</th>
-                                    <th className='row-item'>{product.categoryName}</th>
-                                    <th className='row-item'>{product.subcategoryName}</th>
-                                    <th className='row-item'>{product.quantity}</th>
-                                    <th className='row-item'>{product.price}</th>
-                                    <th className='row-item'>
-                                        <span className='edit-icon'>E </span>
-                                        <span className='remove-icon'> R</span>
-                                    </th>
-                                </tr>
-                            )
+                            this.props.products.map((product) => <ProductItem key={product.productId} product={product} />)
                         }
                     </tbody>
                 </table>
             </div>
-
         );
     }
 }

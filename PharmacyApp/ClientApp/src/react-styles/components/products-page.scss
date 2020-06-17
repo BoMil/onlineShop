@@ -28,12 +28,17 @@
                     font-weight: 400;
                     padding: 14px 4px;
 
-                    .edit-icon {
+                    .action {
+                        padding: 0px 8px;
+                        cursor: pointer;
 
-                    }
+                        &.edit-action {
+                            color: var(--light-blue-primary);
+                        }
 
-                    .remove-icon {
-
+                        &.remove-action {
+                            color: var(--primary-orange);
+                        }
                     }
                 }
             }
