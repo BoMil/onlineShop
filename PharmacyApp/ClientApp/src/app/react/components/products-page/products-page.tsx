@@ -25,15 +25,49 @@ function ProductItem(props) {
     );
 }
 
+/**
+ * It will build a products inventory table with number of
+ * products, categories, subcategories and products that are out of stock
+ */
+function ProductsInventory(props) {
+    return (
+        <div className='inventory-container'>
+            <div className='inventory-column'>
+                <div className='label-title'>Total products</div>
+                <div className='label-value'>{props.data.totalProducts}</div>
+            </div>
+            <div className='inventory-column'>
+                <div className='label-title'>Out of stock</div>
+                <div className='label-value'>{props.data.outOfStock}</div>
+            </div>
+            <div className='inventory-column'>
+                <div className='label-title'>Total categories</div>
+                <div className='label-value'>{props.data.totalCategories}</div>
+            </div>
+            <div className='inventory-column'>
+                <div className='label-title'>Total subcategories</div>
+                <div className='label-value'>{props.data.totalSubcategories}</div>
+            </div>
+        </div>
+    );
+}
+
 class ProductsPage extends React.Component {
 
     state = {
         products: [],
-        isLoading: true
+        inventory: {
+            totalProducts: 0,
+            outOfStock: 0,
+            totalCategories: 0,
+            totalSubcategories: 0
+        },
+        isProductsLoading: true
     };
 
     componentDidMount() {
         console.log('componentDidMount is called ProductsPage');
+        this.fetchInventory();
         this.fetchProducts();
     }
 
@@ -42,7 +76,7 @@ class ProductsPage extends React.Component {
         .then((data) => {
             this.setState ({
                 products: data.allProducts,
-                isLoading: false
+                isProductsLoading: false
             });
             // console.log(data);
         })
@@ -50,7 +84,28 @@ class ProductsPage extends React.Component {
             console.log('Get products failed', error);
             this.setState ({
                 products: [],
-                isLoading: false
+                isProductsLoading: false
+            });
+        });
+    }
+
+    fetchInventory() {
+        dataService.getInventoryData()
+        .then((inventory) => {
+            this.setState ({
+                inventory: inventory.data,
+            });
+            // console.log(data);
+        })
+        .catch((error) => {
+            console.log('Get inventory failed', error);
+            this.setState ({
+                inventory: {
+                    totalProducts: 0,
+                    outOfStock: 0,
+                    totalCategories: 0,
+                    totalSubcategories: 0
+                },
             });
         });
     }
@@ -59,8 +114,11 @@ class ProductsPage extends React.Component {
         // console.log('Get categories from ProductsPage', this.props.products);
         return (
             <div className='products-page-container'>
+                <React.Fragment>
+                    <ProductsInventory data={this.state.inventory}></ProductsInventory>
+                </React.Fragment>
                 {
-                    !this.state.isLoading
+                    !this.state.isProductsLoading
                     ?
                     <table className='products-table'>
                         <thead className='table-header'>
@@ -79,10 +137,9 @@ class ProductsPage extends React.Component {
                                 this.state.products.map((product) => <ProductItem key={product.productId} product={product} />)
                             }
                             </React.Fragment>
-
                         </tbody>
                     </table>
-                    : 'Loading...'
+                    : 'Fetching products...'
                 }
             </div>
         );

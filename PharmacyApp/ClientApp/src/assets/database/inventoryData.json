@@ -1,0 +1,9 @@
+{
+    "data":
+        {
+            "totalProducts": 23,
+            "outOfStock": 8,
+            "totalCategories": 5,
+            "totalSubcategories": 7
+        }
+}

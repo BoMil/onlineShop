@@ -42,7 +42,6 @@ class AdminPage extends React.Component {
                 </section>
                 <section className={'right-section'}>
                     <h1>Welcome to Admin dashboard!</h1>
-                    <div>{this.state.selectedPage} was clicked</div>
                     {
                         this.state.isProductsPageVisible
                             ? <ProductsPage></ProductsPage>

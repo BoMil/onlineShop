@@ -2,7 +2,8 @@ import { fetchWrapper } from '../helpers/fetch-wrapper';
 
 export const dataService = {
     getAllCategories,
-    getAllProducts
+    getAllProducts,
+    getInventoryData
 };
 
 function getAllCategories() {
@@ -11,4 +12,8 @@ function getAllCategories() {
 
 function getAllProducts() {
     return fetchWrapper.get('../../../assets/database/allProducts.json');
+}
+
+function getInventoryData() {
+    return fetchWrapper.get('../../../assets/database/inventoryData.json');
 }

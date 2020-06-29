@@ -1,4 +1,28 @@
 .products-page-container {
+    .inventory-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin: 20px;
+
+        .inventory-column {
+            text-align: center;
+            border-right: 1px solid #a9a9a93b;
+            font-weight: 500;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            .label-title {
+                padding-bottom: 10px;
+            }
+            .label-value {
+                color: var(--secondary-dark);
+                font-size: 22px;
+                font-weight: 600;
+            }
+        }
+    }
     .products-table {
         border-spacing: 0px 8px;
         margin: auto;
