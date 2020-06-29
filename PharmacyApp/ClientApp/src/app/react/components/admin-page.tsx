@@ -1,7 +1,6 @@
 import * as React from 'react';
 import SettingsNavigationBar from './settings-navigation-bar';
 import ProductsPage from './products-page/products-page';
-import { dataService } from '../services/data.service.js';
 
 class AdminPage extends React.Component {
 
@@ -9,12 +8,11 @@ class AdminPage extends React.Component {
         message: '',
         selectedPage: 'PRODUCTS',
         productsList: [],
-        isProductsPageVisible: false
+        isProductsPageVisible: true
     };
 
     componentDidMount() {
-        console.log('componentDidMount is called');
-        this.fetchProducts();
+        console.log('componentDidMount is called AdminPage');
     }
 
     // componentWillUnmount() {
@@ -22,28 +20,16 @@ class AdminPage extends React.Component {
 
     itemSelectedCallback = (menuItem) => {
         if (menuItem === 'PRODUCTS') {
-            this.fetchProducts();
+            this.setState ({
+                selectedPage: menuItem,
+                isProductsPageVisible: true
+            });
         } else {
             this.setState ({
                 selectedPage: menuItem,
                 isProductsPageVisible: false
             });
         }
-    }
-
-    fetchProducts() {
-        dataService.getAllProducts()
-        .then((data) => {
-            this.setState ({
-                productsList: data.allProducts,
-                selectedPage: 'PRODUCTS',
-                isProductsPageVisible: data.allProducts.length ? true : false
-            });
-            // console.log(data);
-        })
-        .catch((error) => {
-            console.log('Get categories failed', error);
-        });
     }
 
     render() {
@@ -59,7 +45,7 @@ class AdminPage extends React.Component {
                     <div>{this.state.selectedPage} was clicked</div>
                     {
                         this.state.isProductsPageVisible
-                            ? <ProductsPage products={this.state.productsList}></ProductsPage>
+                            ? <ProductsPage></ProductsPage>
                             : ''
                     }
                 </section>

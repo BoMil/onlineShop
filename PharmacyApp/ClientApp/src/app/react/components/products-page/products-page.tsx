@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IProduct } from 'src/app/model/product';
+import { dataService } from '../../services/data.service.js';
 
 interface Props {
     products: IProduct[];
@@ -24,29 +25,65 @@ function ProductItem(props) {
     );
 }
 
-class ProductsPage extends React.Component<Props> {
+class ProductsPage extends React.Component {
+
+    state = {
+        products: [],
+        isLoading: true
+    };
+
+    componentDidMount() {
+        console.log('componentDidMount is called ProductsPage');
+        this.fetchProducts();
+    }
+
+    fetchProducts() {
+        dataService.getAllProducts()
+        .then((data) => {
+            this.setState ({
+                products: data.allProducts,
+                isLoading: false
+            });
+            // console.log(data);
+        })
+        .catch((error) => {
+            console.log('Get products failed', error);
+            this.setState ({
+                products: [],
+                isLoading: false
+            });
+        });
+    }
 
     render() {
-        console.log('Get categories from ProductsPage', this.props.products);
+        // console.log('Get categories from ProductsPage', this.props.products);
         return (
             <div className='products-page-container'>
-                <table className='products-table'>
-                    <thead className='table-header'>
-                        <tr className='header-row'>
-                            <th className='header-item'>Product name</th>
-                            <th className='header-item'>Category</th>
-                            <th className='header-item'>Subcategory</th>
-                            <th className='header-item'>Inventory</th>
-                            <th className='header-item'>Price</th>
-                            <th className='header-item'>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className='table-body'>
-                        {
-                            this.props.products.map((product) => <ProductItem key={product.productId} product={product} />)
-                        }
-                    </tbody>
-                </table>
+                {
+                    !this.state.isLoading
+                    ?
+                    <table className='products-table'>
+                        <thead className='table-header'>
+                            <tr className='header-row'>
+                                <th className='header-item'>Product name</th>
+                                <th className='header-item'>Category</th>
+                                <th className='header-item'>Subcategory</th>
+                                <th className='header-item'>Inventory</th>
+                                <th className='header-item'>Price</th>
+                                <th className='header-item'>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody className='table-body'>
+                            <React.Fragment>
+                            {
+                                this.state.products.map((product) => <ProductItem key={product.productId} product={product} />)
+                            }
+                            </React.Fragment>
+
+                        </tbody>
+                    </table>
+                    : 'Loading...'
+                }
             </div>
         );
     }

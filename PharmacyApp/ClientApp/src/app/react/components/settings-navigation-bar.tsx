@@ -15,6 +15,7 @@ class SettingsNavigationBar extends React.Component<Props> {
     }
 
     render() {
+        console.log('SettingsNavigationBar was rendered');
         return (
             <div className='settings-container'>
                 <ul className='settings-menu'>
