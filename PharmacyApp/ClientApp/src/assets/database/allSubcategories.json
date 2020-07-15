@@ -1,0 +1,52 @@
+{
+    "allSubcategories": [
+        {
+            "subcategoryId": 10,
+            "subcategoryName": "Babies and children",
+            "productCategoryId":0,
+            "products":[]
+        },
+        {
+            "subcategoryId": 11,
+            "subcategoryName": "Mother and baby care",
+            "productCategoryId":0,
+            "products":[]
+        },
+        {
+            "subcategoryId": 12,
+            "subcategoryName": "Hair care",
+            "productCategoryId":2,
+            "products":[]
+        },
+        {
+            "subcategoryId": 13,
+            "subcategoryName": "Skin Care",
+            "productCategoryId":2,
+            "products":[]
+        },
+        {
+            "subcategoryId": 10,
+            "subcategoryName": "Diabetic devices",
+            "productCategoryId":3,
+            "products":[]
+        },
+        {
+            "subcategoryId": 10,
+            "subcategoryName": "Diabetic Food",
+            "productCategoryId":3,
+            "products":[]
+        },
+        {
+            "subcategoryId": 10,
+            "subcategoryName": "Daily Essentials",
+            "productCategoryId":4,
+            "products":[]
+        },
+        {
+            "subcategoryId": 10,
+            "subcategoryName": "Nutrition and vitamins",
+            "productCategoryId": 4,
+            "products":[]
+        }
+    ]
+}
