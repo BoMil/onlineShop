@@ -18,6 +18,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { ProductSliderComponent } from './productSlider/productSlider.component';
 import { FooterComponent } from './footer/footer.component';
 import { ReactBidirectionalRendererComponent } from './react-bidirectional-renderer/react-bidirectional-renderer.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     CarouselComponent,
     ProductSliderComponent,
     FooterComponent,
-    ReactBidirectionalRendererComponent
+    ReactBidirectionalRendererComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

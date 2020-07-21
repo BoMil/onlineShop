@@ -1,8 +1,14 @@
 import * as React from 'react';
 import SettingsNavigationBar from './settings-navigation-bar';
 import ProductsPage from './products-page/products-page';
+import { BehaviorSubject } from 'rxjs';
+import { Modal } from 'src/app/angular/_interfaces/modal';
 
-class AdminPage extends React.Component {
+interface AdminProps {
+    modal$: BehaviorSubject<Modal>;
+}
+
+class AdminPage extends React.Component<AdminProps> {
 
     state = {
         message: '',
@@ -32,6 +38,10 @@ class AdminPage extends React.Component {
         }
     }
 
+    modalToggledCallback = (modalData: Modal) => {
+        this.props.modal$.next(modalData);
+    }
+
     render() {
         return (
             <div className={'admin-container'}>
@@ -44,7 +54,7 @@ class AdminPage extends React.Component {
                     <h1>Welcome to Admin dashboard!</h1>
                     {
                         this.state.isProductsPageVisible
-                            ? <ProductsPage></ProductsPage>
+                            ? <ProductsPage onModalToggle = {this.modalToggledCallback}></ProductsPage>
                             : ''
                     }
                 </section>

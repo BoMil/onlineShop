@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IProduct } from 'src/app/model/product';
 import { dataService } from '../../services/data.service.js';
+import { Modal } from 'src/app/angular/_interfaces/modal.js';
 
 interface Props {
-    products: IProduct[];
+    onModalToggle: (data: Modal) => void;
 }
 
 /**
@@ -52,7 +52,7 @@ function ProductsInventory(props) {
     );
 }
 
-class ProductsPage extends React.Component {
+class ProductsPage extends React.Component<Props> {
 
     state = {
         products: [],
@@ -110,10 +110,19 @@ class ProductsPage extends React.Component {
         });
     }
 
+    openModal() {
+        const modalData: Modal = {
+            id: 'add-product-form',
+            opened: true
+        };
+        this.props.onModalToggle(modalData);
+    }
+
     render() {
         // console.log('Get categories from ProductsPage', this.props.products);
         return (
             <div className='products-page-container'>
+                <button onClick={() => this.openModal()} >Open modal</button>
                 <React.Fragment>
                     <ProductsInventory data={this.state.inventory}></ProductsInventory>
                 </React.Fragment>
