@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -19,7 +20,7 @@ import { ProductSliderComponent } from './productSlider/productSlider.component'
 import { FooterComponent } from './footer/footer.component';
 import { ReactBidirectionalRendererComponent } from './react-bidirectional-renderer/react-bidirectional-renderer.component';
 import { ModalComponent } from './modal/modal.component';
-
+import { AddProductFormComponent } from './modal/addProductForm/addProductForm.component';
 
 
 // Routes setup
@@ -52,14 +53,17 @@ const appRoutes: Routes = [
     ProductSliderComponent,
     FooterComponent,
     ReactBidirectionalRendererComponent,
-    ModalComponent
+    ModalComponent,
+    AddProductFormComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     OverlayModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

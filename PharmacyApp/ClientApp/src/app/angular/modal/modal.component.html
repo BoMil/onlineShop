@@ -1,4 +1,8 @@
-<div class="modal-container" >
-    <p>Modal works!</p>
-    <button (click)="closeModal()">Close modal</button>
+<div class="modal-container" (click)="closeModal()">
+    <div class="modal-content" [ngSwitch]="data.id">
+        <add-product-form  [ngSwitch]="'add-product-form'"></add-product-form>
+        <div *ngSwitchDefault>
+            <p>This is default content</p>
+        </div>
+    </div>
 </div>

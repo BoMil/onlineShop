@@ -1,7 +1,7 @@
 <div class="main-app-container">
     <app-navbar></app-navbar>
-    <div class="modal" [class.visible]="isModalVisible">
-        <app-modal></app-modal>
+    <div class="modal" *ngIf="isModalVisible">
+        <app-modal [data]="modalData"></app-modal>
     </div>
     <!-- This is where our routes will be displayed -->
     <router-outlet></router-outlet>

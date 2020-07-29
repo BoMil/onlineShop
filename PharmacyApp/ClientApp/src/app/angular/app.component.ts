@@ -10,6 +10,7 @@ import { Modal } from './_interfaces/modal';
 export class AppComponent implements OnInit, OnDestroy {
     title = 'ClientApp';
     isModalVisible = false;
+    modalData: Modal;
     modalSubscription$;
 
     constructor(private modalService: ModalService) { }
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.modalSubscription$ = this.modalService.modalData.subscribe(
             (data: Modal) => {
-                this.setModalVisibility(data.opened);
+                this.setModalState(data);
             }
         );
     }
@@ -29,8 +30,9 @@ export class AppComponent implements OnInit, OnDestroy {
         }
     }
 
-    setModalVisibility(isModalVisible: boolean) {
-        this.isModalVisible = isModalVisible;
+    setModalState(modalData: Modal) {
+        this.isModalVisible = modalData.opened;
+        this.modalData = modalData;
     }
 
 }

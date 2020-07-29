@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalService } from '../_services/modal.service';
 import { Modal } from '../_interfaces/modal';
 
@@ -8,12 +8,11 @@ import { Modal } from '../_interfaces/modal';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-    modalSubscription$;
+    @Input() data: Modal;
 
     constructor(private modalService: ModalService) { }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     closeModal() {
         const modalData: Modal = {
