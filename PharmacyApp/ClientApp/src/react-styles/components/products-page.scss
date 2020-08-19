@@ -1,4 +1,9 @@
 .products-page-container {
+
+    .add-button-container {
+        margin: 30px;
+    }
+
     .inventory-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;

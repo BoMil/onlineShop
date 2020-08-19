@@ -110,7 +110,7 @@ class ProductsPage extends React.Component<Props> {
         });
     }
 
-    openModal() {
+    openAddProductModal() {
         const modalData: Modal = {
             id: 'add-product-form',
             opened: true
@@ -122,7 +122,12 @@ class ProductsPage extends React.Component<Props> {
         // console.log('Get categories from ProductsPage', this.props.products);
         return (
             <div className='products-page-container'>
-                <button onClick={() => this.openModal()} >Open modal</button>
+                <div className='add-button-container'>
+                    <button className='button primary-button primary-green' onClick={() => this.openAddProductModal()}>
+                        <span className='icon-box'><i className='fas fa-plus'></i></span>Add new product
+                    </button>
+                </div>
+
                 <React.Fragment>
                     <ProductsInventory data={this.state.inventory}></ProductsInventory>
                 </React.Fragment>

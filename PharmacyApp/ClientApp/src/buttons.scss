@@ -1,0 +1,26 @@
+.button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    &.primary-button {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid;
+        font-size: 14px;
+
+        .icon-box {
+            margin-right: 6px;
+        }
+    }
+
+    &.primary-green {
+        background-color: var(--primary-color);
+        color: white;
+
+        &:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+    }
+}

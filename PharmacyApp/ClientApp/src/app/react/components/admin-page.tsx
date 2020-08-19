@@ -51,7 +51,6 @@ class AdminPage extends React.Component<AdminProps> {
                     </SettingsNavigationBar>
                 </section>
                 <section className={'right-section'}>
-                    <h1>Welcome to Admin dashboard!</h1>
                     {
                         this.state.isProductsPageVisible
                             ? <ProductsPage onModalToggle = {this.modalToggledCallback}></ProductsPage>
