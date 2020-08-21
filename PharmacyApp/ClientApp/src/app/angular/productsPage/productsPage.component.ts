@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Crumb } from '../_interfaces/crumb';
 import { SelectedMenuItem } from '../_interfaces/selected-menu-item';
+import { DataService } from '../_services/dataService.service';
 
 @Component({
   selector: 'app-products',
@@ -97,11 +98,16 @@ export class ProductsPageComponent implements OnInit {
         breadCrumbs: []
     };
 
-    constructor() { }
+    constructor(private dataService: DataService) { }
 
     ngOnInit() {
         // Preselect first category by default
         this.selectCategory(this.allCategories[0]);
+        this.dataService.getAllProducts().subscribe(
+            (data) => {
+                console.log(data);
+            }
+        );
     }
 
     selectCategory(category: any): void {
