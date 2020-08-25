@@ -41,6 +41,58 @@ namespace PharmacyApp.Controllers
             return product;
         }
 
+        // GET: api/Products/bySubcategoryId/5
+        [HttpGet("bySubcategoryId/{id}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsBySubcategoryId(int id)
+        {
+            var allProducts = await _context.products.ToListAsync();
+            List<Product> productsBySubcategoryId = new List<Product>();
+
+            if (allProducts == null)
+            {
+                return NotFound();
+            }
+
+            for (int i = 0; i < allProducts.Count; i++)
+            {
+                Product product = allProducts[i];
+
+                if (product.SubcategoryID == id)
+                {
+                    productsBySubcategoryId.Add(product);
+                }
+
+            }
+
+            return productsBySubcategoryId;
+        }
+
+        // GET: api/Products/byCategoryId/5
+        [HttpGet("byCategoryId/{id}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategoryId(int id)
+        {
+            var allProducts = await _context.products.ToListAsync();
+            List<Product> productsByCategoryId = new List<Product>();
+
+            if (allProducts == null)
+            {
+                return NotFound();
+            }
+
+            for (int i = 0; i < allProducts.Count; i++)
+            {
+                Product product = allProducts[i];
+
+                if (product.CategoryID == id)
+                {
+                    productsByCategoryId.Add(product);
+                }
+
+            }
+
+            return productsByCategoryId;
+        }
+
         // PUT: api/Products/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)

@@ -10,7 +10,7 @@ using PharmacyApp.Models;
 namespace PharmacyApp.Migrations
 {
     [DbContext(typeof(PharmacyContext))]
-    [Migration("20191007191525_InitialCreate")]
+    [Migration("20200825193219_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,8 @@ namespace PharmacyApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryID");
+
                     b.Property<float>("PreviousPrice");
 
                     b.Property<float>("Price");
@@ -78,7 +80,7 @@ namespace PharmacyApp.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("CategoryId");
 
@@ -91,7 +93,7 @@ namespace PharmacyApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProductCategoryId");
+                    b.Property<int>("ProductCategoryId");
 
                     b.Property<string>("SubcategoryName")
                         .IsRequired()
@@ -123,7 +125,8 @@ namespace PharmacyApp.Migrations
                 {
                     b.HasOne("PharmacyApp.Models.ProductCategory")
                         .WithMany("Subcategories")
-                        .HasForeignKey("ProductCategoryId");
+                        .HasForeignKey("ProductCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

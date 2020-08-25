@@ -13,7 +13,7 @@ namespace PharmacyApp.Models
         public int CategoryId { get; set; }
 
         [Required]
-        [Column(TypeName = "nvarchar(100)")]
+        [Column(TypeName = "nvarchar(50)")]
         public string CategoryName { get; set; }
 
         public virtual ICollection<ProductSubcategory> Subcategories { get; set; }

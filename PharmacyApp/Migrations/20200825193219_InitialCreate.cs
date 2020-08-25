@@ -13,7 +13,7 @@ namespace PharmacyApp.Migrations
                 {
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CategoryName = table.Column<string>(type: "nvarchar(100)", nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,7 +27,7 @@ namespace PharmacyApp.Migrations
                     SubcategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SubcategoryName = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    ProductCategoryId = table.Column<int>(nullable: true)
+                    ProductCategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,7 +37,7 @@ namespace PharmacyApp.Migrations
                         column: x => x.ProductCategoryId,
                         principalTable: "productCategories",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,6 +49,7 @@ namespace PharmacyApp.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     ProductDescription = table.Column<string>(type: "nvarchar(150)", nullable: true),
                     SubcategoryID = table.Column<int>(nullable: false),
+                    CategoryID = table.Column<int>(nullable: false),
                     Price = table.Column<float>(nullable: false),
                     PreviousPrice = table.Column<float>(nullable: false)
                 },
