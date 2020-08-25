@@ -41,6 +41,31 @@ namespace PharmacyApp.Controllers
             return productSubcategory;
         }
 
+        // GET: api/ProductSubcategories/byCategoryId/5
+        [HttpGet("byCategoryId/{id}")]
+        public async Task<ActionResult<IEnumerable<ProductSubcategory>>> GetProductSubcategoriesByCategoryId(int id)
+        {
+            var allSubcategories = await _context.productSubcategories.ToListAsync();
+            List<ProductSubcategory> subcategoriesByCategoryId = new List<ProductSubcategory>();
+
+            if (allSubcategories == null)
+            {
+                return NotFound();
+            }
+
+            for (int i = 0; i < allSubcategories.Count; i++)
+            {
+                ProductSubcategory subcategory = allSubcategories[i];
+
+                if (subcategory.ProductCategoryId == id)
+                {
+                    subcategoriesByCategoryId.Add(subcategory);
+                }
+            }
+
+            return subcategoriesByCategoryId;
+        }
+
         // PUT: api/ProductSubcategories/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductSubcategory(int id, ProductSubcategory productSubcategory)
