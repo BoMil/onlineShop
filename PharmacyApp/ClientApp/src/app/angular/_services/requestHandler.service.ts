@@ -52,4 +52,18 @@ export class RequestHandlerService {
             )
         );
     }
+
+    sendDeleteRequest(url: string, requestData: any) {
+        return this.http.delete<any>(url, requestData)
+        .pipe(
+            tap(
+                (data) => {
+                    return data;
+                },
+                (error) => {
+                    return throwError(error);
+                }
+            )
+        );
+    }
 }

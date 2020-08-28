@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Crumb } from '../_interfaces/crumb';
 import { SelectedMenuItem } from '../_interfaces/selected-menu-item';
 import { DataService } from '../_services/dataService.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Category } from '../_interfaces/category';
+import { Subcategory } from '../_interfaces/subcategory';
 
 @Component({
   selector: 'app-products',
@@ -9,82 +13,11 @@ import { DataService } from '../_services/dataService.service';
   styleUrls: ['./productsPage.component.scss']
 })
 
-export class ProductsPageComponent implements OnInit {
-    allCategories: any = [
-        {
-            CategoryId: 0,
-            CategoryName: 'Dodaci ishrani',
-            Subcategories: [
-                {
-                    SubcategoryId: 10,
-                    SubcategoryName: 'Bebe i deca',
-                    ProductCategoryId: 0,
-                    Products: []
-                },
-                {
-                    SubcategoryId: 101,
-                    SubcategoryName: 'Kasalj i prehlada',
-                    ProductCategoryId: 0,
-                    Products: []
-                },
-                {
-                    SubcategoryId: 102,
-                    SubcategoryName: 'Vitamini i minerali',
-                    ProductCategoryId: 0,
-                    Products: []
-                },
-            ]
-        },
-        {
-            CategoryId: 1,
-            CategoryName: 'Kozmetika',
-            Subcategories: [
-                {
-                    SubcategoryId: 12,
-                    SubcategoryName: 'Nega tela',
-                    ProductCategoryId: 1,
-                    Products: []
-                },
-                {
-                    SubcategoryId: 11,
-                    SubcategoryName: 'Nega lica',
-                    ProductCategoryId: 1,
-                    Products: []
-                },
-                {
-                    SubcategoryId: 23,
-                    SubcategoryName: 'Nega kose',
-                    ProductCategoryId: 1,
-                    Products: []
-                },
-            ]
-        },
-        {
-            CategoryId: 2,
-            CategoryName: 'Nega i zastita',
-            Subcategories: [
-                {
-                    SubcategoryId: 122,
-                    SubcategoryName: 'Preparati za suncanje',
-                    ProductCategoryId: 2,
-                    Products: []
-                },
-                {
-                    SubcategoryId: 33,
-                    SubcategoryName: 'Dijabetes',
-                    ProductCategoryId: 2,
-                    Products: []
-                },
-                {
-                    SubcategoryId: 233,
-                    SubcategoryName: 'Bol',
-                    ProductCategoryId: 2,
-                    Products: []
-                },
-            ]
-        },
-    ];
-
+export class ProductsPageComponent implements OnInit, OnDestroy {
+    /**
+     * Subject used to cancel all subscriptions after component is destroyed
+     */
+    ngUnsubscribe: Subject<any> = new Subject<any>();
     /**
      * Array of category icons displayed before category name in sidebar menu
      */
@@ -97,71 +30,93 @@ export class ProductsPageComponent implements OnInit {
         subcategory: {},
         breadCrumbs: []
     };
+    allCategories: Category[] = [];
+    allProducts: any = [];
 
     constructor(private dataService: DataService) { }
 
     ngOnInit() {
-        // Preselect first category by default
+        this.allCategories = this.dataService.productsPageMenuData;
+        // console.log('allCategories', this.allCategories);
         this.selectCategory(this.allCategories[0]);
-        this.dataService.getAllProducts().subscribe(
+    }
+
+    ngOnDestroy() {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+    }
+
+    selectCategory(category: Category): void {
+        this.dataService.getProductsByCategoryId(category.categoryId)
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe(
             (data) => {
-                console.log(data);
+                this.allProducts = data;
+                // Unselect subcategory
+                this.selectedItem.subcategory.id = null;
+
+                this.selectedItem.category.id = category.categoryId;
+                const breadCrumb: Crumb = {
+                    id: category.categoryId,
+                    name: category.categoryName,
+                    category: true
+                };
+
+                this.selectedItem.breadCrumbs = [];
+                this.selectedItem.breadCrumbs.push(breadCrumb);
+                // console.log('getProductsByCategoryId', data);
+            },
+            (error) => {}
+        );
+
+    }
+
+    selectSubcategory(subcategory: Subcategory): void {
+
+        this.dataService.getProductsBySubcategoryId(subcategory.subcategoryId)
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe(
+            (data) => {
+                this.allProducts = data;
+                this.selectedItem.category.id = null;
+                this.selectedItem.subcategory.id = subcategory.subcategoryId;
+
+                // Make selected item bread-crumbs
+                const parentCategoryIndex = this.allCategories.findIndex(element => element.categoryId === subcategory.productCategoryId);
+
+                const categoryCrumb: Crumb = {
+                    id: this.allCategories[parentCategoryIndex].categoryId,
+                    name: this.allCategories[parentCategoryIndex].categoryName,
+                    category: true
+                };
+                const subcategoryCrumb: Crumb = {
+                    id: subcategory.subcategoryId,
+                    name: subcategory.subcategoryName,
+                    parentId: subcategory.productCategoryId,
+                    category: false,
+                };
+
+                this.selectedItem.breadCrumbs = [];
+                this.selectedItem.breadCrumbs.splice(0, 0, categoryCrumb, subcategoryCrumb);
+                // console.log('getProductsBySubcategoryId', data);
             }
         );
-    }
-
-    selectCategory(category: any): void {
-        // Unselect subcategory
-        this.selectedItem.subcategory.id = null;
-
-        this.selectedItem.category.id = category.CategoryId;
-        const breadCrumb: Crumb = {
-            id: category.CategoryId,
-            name: category.CategoryName,
-            category: true
-        };
-
-        this.selectedItem.breadCrumbs = [];
-        this.selectedItem.breadCrumbs.push(breadCrumb);
-    }
-
-    selectSubcategory(subcategory: any): void {
-        this.selectedItem.category.id = null;
-        this.selectedItem.subcategory.id = subcategory.SubcategoryId;
-
-        // Make selected item bread-crumbs
-        const parentCategoryIndex = this.allCategories.findIndex(element => element.CategoryId === subcategory.ProductCategoryId);
-
-        const categoryCrumb: Crumb = {
-            id: this.allCategories[parentCategoryIndex].CategoryId,
-            name: this.allCategories[parentCategoryIndex].CategoryName,
-            category: true
-        };
-        const subcategoryCrumb: Crumb = {
-            id: subcategory.SubcategoryId,
-            name: subcategory.SubcategoryName,
-            parentId: subcategory.ProductCategoryId,
-            category: false,
-        };
-
-        this.selectedItem.breadCrumbs = [];
-        this.selectedItem.breadCrumbs.splice(0, 0, categoryCrumb, subcategoryCrumb);
     }
 
     selectBreadCrumb(crumb: Crumb): void {
         if (crumb.category) {
             // Make data compatible for category
-            const category = {
-                CategoryId: crumb.id,
-                CategoryName: crumb.name
+            const category: Category = {
+                categoryId: crumb.id,
+                categoryName: crumb.name
             };
             this.selectCategory(category);
         } else {
             // Make data compatible for subcategory
-            const subcategory = {
-                SubcategoryId: crumb.id,
-                SubcategoryName: crumb.name,
-                ProductCategoryId: crumb.parentId
+            const subcategory: Subcategory = {
+                subcategoryId: crumb.id,
+                subcategoryName: crumb.name,
+                productCategoryId: crumb.parentId
             };
             this.selectSubcategory(subcategory);
         }

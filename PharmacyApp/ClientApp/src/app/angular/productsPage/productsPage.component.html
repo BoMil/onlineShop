@@ -2,15 +2,15 @@
     <div class="sidebar-menu">
         <ul class="category-list">
             <li class="menu-item category-name" *ngFor="let category of allCategories; let i = index">
-                <div class="icon-name" (click)="selectCategory(category)" [class.selected]="category?.CategoryId === selectedItem.category?.id">
+                <div class="icon-name" (click)="selectCategory(category)" [class.selected]="category?.categoryId === selectedItem.category?.id">
                     <svg-icon icon="{{categoryIcons[i]}}" class="icon"></svg-icon>
-                    {{category.CategoryName}}
+                    {{category.categoryName}}
                 </div>
 
                 <ul class="subcategory-list">
-                    <li class="menu-item subcategory-name" *ngFor="let subcategory of category.Subcategories">
-                        <div class="icon-name" (click)="selectSubcategory(subcategory)" [class.selected]="subcategory?.SubcategoryId === selectedItem.subcategory?.id">
-                            {{subcategory.SubcategoryName}}
+                    <li class="menu-item subcategory-name" *ngFor="let subcategory of category.subcategories">
+                        <div class="icon-name" (click)="selectSubcategory(subcategory)" [class.selected]="subcategory?.subcategoryId === selectedItem.subcategory?.id">
+                            {{subcategory.subcategoryName}}
                         </div>
                     </li>
                 </ul>

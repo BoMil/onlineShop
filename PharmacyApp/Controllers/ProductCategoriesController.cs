@@ -24,7 +24,50 @@ namespace PharmacyApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductCategory>>> GetproductCategories()
         {
-            return await _context.productCategories.ToListAsync();
+            var allCategories = await _context.productCategories.ToListAsync();
+            var allSubcategories = await _context.productSubcategories.ToListAsync();
+            // var allProducts = await _context.products.ToListAsync();
+
+            List<ProductCategory> completeCategories = new List<ProductCategory>();
+
+            if (allCategories == null)
+            {
+                return NotFound();
+            }
+
+            for (int i = 0; i < allCategories.Count; i++)
+            {
+                ProductCategory category = allCategories[i];
+
+                if (allSubcategories != null)
+                {
+                    for (int index = 0; index < allSubcategories.Count; index++)
+                    {
+                        ProductSubcategory subcategory = allSubcategories[index];
+
+						// ? Uncoment this in case you want to add products to subcategories
+                        // if (allProducts != null)
+                        // {
+                        //     for (int a = 0; a < allProducts.Count; a++)
+                        //     {
+                        //         Product product = allProducts[a];
+
+                        //         if (product.SubcategoryID == subcategory.SubcategoryId)
+                        //         {
+                        //             subcategory.Products.Add(product);
+                        //         }
+                        //     }
+                        // }
+
+                        if (subcategory.ProductCategoryId == category.CategoryId)
+                        {
+                            category.Subcategories.Add(subcategory);
+                        }
+
+                    }
+                }
+            }
+            return allCategories;
         }
 
         // GET: api/ProductCategories/5
