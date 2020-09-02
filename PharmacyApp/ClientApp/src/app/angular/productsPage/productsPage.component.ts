@@ -36,9 +36,17 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     constructor(private dataService: DataService) { }
 
     ngOnInit() {
-        this.allCategories = this.dataService.productsPageMenuData;
-        // console.log('allCategories', this.allCategories);
-        this.selectCategory(this.allCategories[0]);
+        this.dataService.productsPageMenuData.subscribe(
+            (data) => {
+                this.allCategories = data;
+                // console.log('allCategories', this.allCategories);
+                if (this.allCategories.length) {
+                    this.selectCategory(this.allCategories[0]);
+                }
+
+            }
+        );
+
     }
 
     ngOnDestroy() {

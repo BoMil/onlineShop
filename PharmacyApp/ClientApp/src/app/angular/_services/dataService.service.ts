@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RequestHandlerService } from './requestHandler.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DataService {
      * Array that holds categories and subcategories that will be
      * displayed in the products page menu
      */
-    productsPageMenuData: any = [];
+    productsPageMenuData: BehaviorSubject<any> = new BehaviorSubject([]);
 
     constructor(private requestHandlerService: RequestHandlerService) {
         this.initializeProductsPageMenu();
@@ -27,7 +28,8 @@ export class DataService {
     initializeProductsPageMenu() {
         this.getAllCategories().subscribe(
             (data) => {
-                this.productsPageMenuData = data;
+                this.productsPageMenuData.next(data);
+                // console.log('initializeProductsPageMenu', data);
             }
         );
 

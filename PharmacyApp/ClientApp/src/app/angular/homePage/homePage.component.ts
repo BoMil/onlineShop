@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICarouselItem } from '../_interfaces/carouselItem';
+import { DataService } from '../_services/dataService.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -41,7 +42,7 @@ export class HomePageComponent implements OnInit {
      */
     isParalaxVisible = false;
 
-    constructor() {}
+    constructor(private dataService: DataService) {}
 
     ngOnInit() {
         // Initial commit Hello World
