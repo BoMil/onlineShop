@@ -22,11 +22,11 @@
             <span class="single-crumb" *ngFor="let crumb of selectedItem.breadCrumbs; let first = first"  (click)="selectBreadCrumb(crumb)">{{first ? '' : ' / '}} {{crumb.name}}</span>
         </div>
 
-        <product-card *ngFor="let product of allProducts"
-            [productData]="product"
-            [allowHoverEffect]="true">
-        </product-card>
-        <!-- <product-card [allowHoverEffect]="true"></product-card>
-        <product-card [allowHoverEffect]="true"></product-card> -->
+        <div class="content-item" *ngFor="let product of allProducts">
+            <product-card
+                [productData]="product"
+                [allowHoverEffect]="true">
+            </product-card>
+        </div>
     </div>
 </div>
