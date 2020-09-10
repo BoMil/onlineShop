@@ -1,0 +1,10 @@
+<div class="dropdown-search-container" (click)="toggleDropdown()">
+    <div class="dropdown-text">
+        <input class="dropdown-input" placeholder="{{label}}">
+        <i class="fas" [ngClass]="{'fa-angle-up': open,'fa-angle-down': !open}"></i>
+    </div>
+
+    <div #dropdownMenu class="dropdown-menu">
+        <div *ngFor="let item of dropdownItems" (click)="selectItem(item); $event.stopPropagation()" class="dropdown-item" [class.selected]="item.selected">{{item.entityName}}</div>
+    </div>
+</div>

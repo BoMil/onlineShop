@@ -6,6 +6,15 @@
 @import "react-styles/reactStyles.scss";
 @import "buttons.scss";
 
+// This setup will disable child elements to overflow parent width
+// in cases when we increase the childs width
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: sans-serif;
     padding: 0px 15px;

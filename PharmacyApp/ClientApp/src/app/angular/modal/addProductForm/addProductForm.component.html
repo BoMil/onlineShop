@@ -1,20 +1,38 @@
 <form class="products-form" (click)="$event.stopPropagation()" [formGroup]="addProductsForm" (ngSubmit)="subimtForm()">
-    <div class="product-form-header"></div>
     <div class="product-form-group">
         <label for="productName" class="form-label">Product name</label>
         <input class="form-input" type="text" formControlName="productName" placeholder="Enter your product name here">
+        <label [hidden]="!f.productName.errors || !submitted" for="productName" class="error">Product name is missing</label>
     </div>
+
     <div class="product-form-group">
-        <label for="productName" class="form-label">Product category</label>
-        <select formControlName="category" class="form-dropdown">
-            <option *ngFor="let category of categories" class="form-option" value="{{category}}">{{category}}</option>
-        </select>
+        <label for="productDescription" class="form-label">Product description</label>
+        <textarea class="product-textarea" formControlName="productDescription" placeholder="Enter your product description here"></textarea>
+        <label [hidden]="!f.productDescription.errors || !submitted" for="productDescription" class="error">Product description is missing</label>
     </div>
+
     <div class="product-form-group">
-        <label for="productName" class="form-label">Product subcategory</label>
-        <select formControlName="subcategory" class="form-dropdown">
-            <option *ngFor="let subcategory of subcategories" value="{{subcategory}}">{{subcategory}}</option>
-        </select>
+        <label for="productPrice" class="form-label">Product price</label>
+        <input class="form-input" type="text" formControlName="productPrice" placeholder="Enter your product price here">
+        <label [hidden]="!f.productPrice.errors || !submitted" for="productPrice" class="error">Product price is missing</label>
+    </div>
+
+    <div class="product-form-group" *ngIf="categories.length">
+        <dropdown-search
+            [dropdownItems]="categories"
+            [label]="'Select category'"
+            (itemSelected)="onCategorySelected($event)">
+        </dropdown-search>
+        <label [hidden]="selectedCategory || !submitted"  class="error">You need to select a product category</label>
+    </div>
+
+    <div class="product-form-group" *ngIf="subcategories.length">
+        <dropdown-search
+            [dropdownItems]="subcategories"
+            [label]="'Select subategory'"
+            (itemSelected)="onSubcategorySelected($event)">
+        </dropdown-search>
+        <label [hidden]="selectedSubcategory || !submitted"  class="error">You need to select a product subcategory</label>
     </div>
     <div class="product-form-group">
         <button class="form-submit">Add product</button>

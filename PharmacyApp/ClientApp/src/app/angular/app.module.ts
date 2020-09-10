@@ -21,6 +21,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ReactBidirectionalRendererComponent } from './react-bidirectional-renderer/react-bidirectional-renderer.component';
 import { ModalComponent } from './modal/modal.component';
 import { AddProductFormComponent } from './modal/addProductForm/addProductForm.component';
+import { DropdownSearchComponent } from './dropdownSearch/dropdownSearch.component';
 
 
 // Routes setup
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     FooterComponent,
     ReactBidirectionalRendererComponent,
     ModalComponent,
-    AddProductFormComponent
+    AddProductFormComponent,
+    DropdownSearchComponent
   ],
   imports: [
     BrowserModule,

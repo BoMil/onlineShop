@@ -2,23 +2,25 @@
     background-color: white;
     min-height: 300px;
     border-radius: 6px;
+    padding: 30px 0px;
 
     input::-webkit-input-placeholder {
         color: var(--text-on-secondary);
         font-size: 14px;
     }
 
-    .product-form-header {
-        background-color: var(--primary-color);
-        height: 30px;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-        margin-bottom: 20px;
-    }
-
     .product-form-group {
         width: 70%;
         margin: auto auto 15px;
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
 
         .form-label {
             display: block;
@@ -32,6 +34,13 @@
             border: none;
             border-bottom: 1px solid black;
             outline: unset;
+        }
+
+        .product-textarea {
+            min-width: 100%;
+            max-width: 100%;
+            max-height: 200px;
+            min-height: 50px;
         }
 
         .form-dropdown {
@@ -51,7 +60,7 @@
             border: none;
             background-color: var(--primary-color);
             color: white;
-            height: 30px;
+            height: 36px;
             font-size: 16px;
             cursor: pointer;
             opacity: 0.96;

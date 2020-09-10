@@ -122,4 +122,14 @@ export class DataService {
         const url = this.subcategoryControllerUrl;
         return this.requestHandlerService.sendGetRequest(url, requestData);
     }
+
+    /**
+     * It will get all subcategories by the category id
+     * @name getSubcategoriesByCategoryId
+     * @param id Category id
+     */
+    getSubcategoriesByCategoryId(id) {
+        const url = this.subcategoryControllerUrl + '/byCategoryId/' + id;
+        return this.requestHandlerService.sendGetRequest(url, {});
+    }
 }
