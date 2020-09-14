@@ -17,6 +17,11 @@
         <label [hidden]="!f.productPrice.errors || !submitted" for="productPrice" class="error">Product price is missing</label>
     </div>
 
+    <div class="product-form-group">
+        <label for="productQuantity" class="form-label">Product quantity</label>
+        <input class="form-input" type="text" formControlName="productQuantity" placeholder="Enter your product quantity here">
+    </div>
+
     <div class="product-form-group" *ngIf="categories.length">
         <dropdown-search
             [dropdownItems]="categories"

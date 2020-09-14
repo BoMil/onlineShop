@@ -75,7 +75,7 @@ class ProductsPage extends React.Component<Props> {
         dataService.getAllProducts()
         .then((data) => {
             this.setState ({
-                products: data.allProducts,
+                products: data,
                 isProductsLoading: false
             });
             // console.log(data);

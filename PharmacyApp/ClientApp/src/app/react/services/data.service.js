@@ -5,13 +5,20 @@ export const dataService = {
     getAllProducts,
     getInventoryData
 };
+const productControllerUrl = '/api/Products',
+      categoryControllerUrl = '/api/ProductCategories',
+      subcategoryControllerUrl = '/api/ProductSubcategories';
 
 function getAllCategories() {
-    return fetchWrapper.get('../../../assets/database/allCategories.json');
+    const url = categoryControllerUrl;
+    return fetchWrapper.get(url);
+    // return fetchWrapper.get('../../../assets/database/allCategories.json');
 }
 
 function getAllProducts() {
-    return fetchWrapper.get('../../../assets/database/allProducts.json');
+    const url = productControllerUrl;
+    return fetchWrapper.get(url);
+    // return fetchWrapper.get('../../../assets/database/allProducts.json');
 }
 
 function getInventoryData() {

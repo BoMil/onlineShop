@@ -72,7 +72,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
 
                 this.selectedItem.breadCrumbs = [];
                 this.selectedItem.breadCrumbs.push(breadCrumb);
-                // console.log('getProductsByCategoryId', data);
+                console.log('getProductsByCategoryId', data);
             },
             (error) => {}
         );

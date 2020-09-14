@@ -56,7 +56,8 @@ export class AddProductFormComponent implements OnInit, OnDestroy {
         this.addProductsForm = this.formBuilder.group({
             productName: ['', Validators.required],
             productDescription: ['', [ Validators.required, Validators.maxLength(50)]],
-            productPrice: [0, Validators.required]
+            productPrice: [0, Validators.required],
+            productQuantity: [0]
         });
     }
 
@@ -90,7 +91,10 @@ export class AddProductFormComponent implements OnInit, OnDestroy {
         }
 
         const request = {
-            productName: this.f.productName.value ,
+            productName: this.f.productName.value,
+            categoryName: this.selectedCategory.categoryName,
+            subcategoryName: this.selectedSubcategory.subcategoryName,
+            quantity: this.f.productQuantity.value ? this.f.productQuantity.value : 0,
             productDescription: this.f.productDescription.value,
             subcategoryId: this.selectedSubcategory.subcategoryId,
             categoryID: this.selectedCategory.categoryId,

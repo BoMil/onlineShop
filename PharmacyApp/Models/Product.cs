@@ -13,6 +13,16 @@ namespace PharmacyApp.Models
         [Column(TypeName = "nvarchar(50)")]
         public string ProductName { get; set; }
 
+        [Required]
+        [Column(TypeName = "nvarchar(50)")]
+        public string CategoryName { get; set; }
+
+        [Required]
+        [Column(TypeName = "nvarchar(50)")]
+        public string SubcategoryName { get; set; }
+
+        public int Quantity { get; set; }
+
         [Column(TypeName = "nvarchar(150)")]
         public string ProductDescription { get; set; }
 

@@ -4,8 +4,11 @@ export interface Product {
     labels: any[];
     previousPrice?: number;
     price: number;
+    quantity: number;
     productDescription: string;
     productId?: number;
     productName: string;
+    categoryName: string;
+    subcategoryName: string;
 }
 
