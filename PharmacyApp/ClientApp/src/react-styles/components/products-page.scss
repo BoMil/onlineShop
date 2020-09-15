@@ -31,13 +31,14 @@
     .products-table {
         border-spacing: 0px 8px;
         margin: auto;
+        padding: 0px 15px;
 
         .table-header {
             background-color: var(--light-green);
             .header-row {
                 .header-item {
                     padding: 15px 5px;
-                    width: 18%;
+                    width: 12%;
 
                     &:last-child {
                         width: 10%;

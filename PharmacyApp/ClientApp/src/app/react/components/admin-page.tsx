@@ -53,7 +53,9 @@ class AdminPage extends React.Component<AdminProps> {
                 <section className={'right-section'}>
                     {
                         this.state.isProductsPageVisible
-                            ? <ProductsPage onModalToggle = {this.modalToggledCallback}></ProductsPage>
+                            ?   <ProductsPage
+                                    onModalToggle = {this.modalToggledCallback}>
+                                </ProductsPage>
                             : ''
                     }
                 </section>

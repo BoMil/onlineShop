@@ -1,28 +1,10 @@
 import * as React from 'react';
 import { dataService } from '../../services/data.service.js';
 import { Modal } from 'src/app/angular/_interfaces/modal.js';
+import TableItem from './table-item';
 
 interface Props {
     onModalToggle: (data: Modal) => void;
-}
-
-/**
- *  It will build a single row in the products table with all data related to product
- */
-function ProductItem(props) {
-    return (
-        <tr className='body-row' >
-            <th className='row-item'>{props.product.productName}</th>
-            <th className='row-item'>{props.product.categoryName}</th>
-            <th className='row-item'>{props.product.subcategoryName}</th>
-            <th className='row-item'>{props.product.quantity}</th>
-            <th className='row-item'>{props.product.price}</th>
-            <th className='row-item'>
-                <span className='action edit-action'><i className='far fa-edit'></i></span>
-                <span className='action remove-action'><i className='fas fa-trash-alt'></i></span>
-            </th>
-        </tr>
-    );
 }
 
 /**
@@ -83,7 +65,7 @@ class ProductsPage extends React.Component<Props> {
         .catch((error) => {
             console.log('Get products failed', error);
             this.setState ({
-                products: [],
+                products: this.state.products,
                 isProductsLoading: false
             });
         });
@@ -118,6 +100,33 @@ class ProductsPage extends React.Component<Props> {
         this.props.onModalToggle(modalData);
     }
 
+
+    tableItemUpdatedCallback = (item) => {
+        // console.log('tableItemUpdatedCallback', item);
+        const request = {
+            productName: item.productName,
+            categoryName: item.categoryName,
+            subcategoryName: item.subcategoryName,
+            quantity: item.quantity,
+            productDescription: item.productDescription,
+            subcategoryId: item.subcategoryID,
+            categoryID: item.categoryID,
+            productId: item.productId,
+            price: item.price,
+            previousPrice: 0
+        };
+
+        dataService.updateProductById(item.productId, request)
+        .then((data) => {
+            this.fetchProducts();
+            // console.log(data);
+        })
+        .catch((error) => {
+            console.log('Update product failed', error);
+            this.setState ({});
+        });
+    }
+
     render() {
         // console.log('Get categories from ProductsPage', this.props.products);
         return (
@@ -141,14 +150,23 @@ class ProductsPage extends React.Component<Props> {
                                 <th className='header-item'>Category</th>
                                 <th className='header-item'>Subcategory</th>
                                 <th className='header-item'>Inventory</th>
+                                <th className='header-item'>Description</th>
                                 <th className='header-item'>Price</th>
+                                <th className='header-item'>Previous price</th>
                                 <th className='header-item'>Action</th>
                             </tr>
                         </thead>
                         <tbody className='table-body'>
                             <React.Fragment>
                             {
-                                this.state.products.map((product) => <ProductItem key={product.productId} product={product} />)
+                                this.state.products.map(
+                                    (product) =>
+                                        <TableItem
+                                            onItemSubmited = {this.tableItemUpdatedCallback}
+                                            data={product}
+                                            key={product.productId}>
+                                        </TableItem>
+                                )
                             }
                             </React.Fragment>
                         </tbody>

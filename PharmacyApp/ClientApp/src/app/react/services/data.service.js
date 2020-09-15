@@ -3,7 +3,8 @@ import { fetchWrapper } from '../helpers/fetch-wrapper';
 export const dataService = {
     getAllCategories,
     getAllProducts,
-    getInventoryData
+    getInventoryData,
+    updateProductById
 };
 const productControllerUrl = '/api/Products',
       categoryControllerUrl = '/api/ProductCategories',
@@ -23,4 +24,10 @@ function getAllProducts() {
 
 function getInventoryData() {
     return fetchWrapper.get('../../../assets/database/inventoryData.json');
+}
+
+function updateProductById(id, product) {
+    const url = productControllerUrl + '/' + id;
+    return fetchWrapper.put(url, product);
+    // return fetchWrapper.get('../../../assets/database/inventoryData.json');
 }
