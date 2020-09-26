@@ -22,6 +22,7 @@ import { ReactBidirectionalRendererComponent } from './react-bidirectional-rende
 import { ModalComponent } from './modal/modal.component';
 import { AddProductFormComponent } from './modal/addProductForm/addProductForm.component';
 import { DropdownSearchComponent } from './dropdownSearch/dropdownSearch.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 // Routes setup
@@ -67,7 +68,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [], // AuthGuard
   bootstrap: [AppComponent],
   entryComponents: [PopoverComponent, AwesomeTooltipComponent]
 })
