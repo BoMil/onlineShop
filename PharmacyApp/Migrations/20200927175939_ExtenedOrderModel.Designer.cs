@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PharmacyApp.Models;
 
 namespace PharmacyApp.Migrations
 {
     [DbContext(typeof(PharmacyContext))]
-    partial class PharmacyContextModelSnapshot : ModelSnapshot
+    [Migration("20200927175939_ExtenedOrderModel")]
+    partial class ExtenedOrderModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +55,7 @@ namespace PharmacyApp.Migrations
                     b.Property<string>("OrderNumber")
                         .IsRequired();
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("OrderId");
 
@@ -68,7 +70,7 @@ namespace PharmacyApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderId");
+                    b.Property<int?>("OrderId");
 
                     b.Property<int?>("ProductId");
 
@@ -202,16 +204,14 @@ namespace PharmacyApp.Migrations
                 {
                     b.HasOne("PharmacyApp.Models.User", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("PharmacyApp.Models.OrderItem", b =>
                 {
                     b.HasOne("PharmacyApp.Models.Order", "Order")
                         .WithMany("Items")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("PharmacyApp.Models.Product", "Product")
                         .WithMany()
