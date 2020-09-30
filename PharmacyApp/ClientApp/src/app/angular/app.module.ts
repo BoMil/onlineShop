@@ -23,6 +23,8 @@ import { ModalComponent } from './modal/modal.component';
 import { AddProductFormComponent } from './modal/addProductForm/addProductForm.component';
 import { DropdownSearchComponent } from './dropdownSearch/dropdownSearch.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 // Routes setup
@@ -57,7 +59,9 @@ const appRoutes: Routes = [
     ReactBidirectionalRendererComponent,
     ModalComponent,
     AddProductFormComponent,
-    DropdownSearchComponent
+    DropdownSearchComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
