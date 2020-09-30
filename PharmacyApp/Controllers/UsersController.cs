@@ -75,6 +75,7 @@ namespace PharmacyApp.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Orders = user.Orders,
+                Type = user.Type,
                 Token = tokenString
             });
         }

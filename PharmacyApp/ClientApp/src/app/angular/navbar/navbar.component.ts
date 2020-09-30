@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Popover } from '../popover/popover.service';
+import { UserAuthService } from '../_services/userAuth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,19 +16,49 @@ export class NavbarComponent implements OnInit {
     isContactSeleceted = false;
     isAdminSeleceted = false;
 
-    // TODO This will be changed after we add a backend support
-    hasAdminPermission = true;
+    isUserLogedIn = false;
 
     constructor(
         private router: Router,
+        private route: ActivatedRoute,
+        private authentication: UserAuthService,
         private popper: Popover) { }
 
     ngOnInit() {
-        // Open Products initialy
+        this.authentication.currentUser.subscribe(
+            (user) => {
+                if (user) {
+                    this.isUserLogedIn = true;
+                } else {
+                    this.isUserLogedIn = false;
+                }
+            }
+        );
+        // Open Home initialy
         this.router.navigateByUrl('/home');
         this.isHomeSelected = true;
     }
 
+    /**
+     * It will send user to login page if he is not loged in, otherwise it will logout
+     * @name loginLogout
+     */
+    loginLogout() {
+        if (this.isUserLogedIn) {
+            this.authentication.logout();
+            // Go back to home after logout if the user is in admin page
+            if (this.router.url === '/admin') {
+                this.router.navigateByUrl('/home');
+            }
+        } else {
+            this.router.navigateByUrl('/login');
+        }
+    }
+
+    /**
+     * It will  reset control view variables to default values
+     * @name resetControlViewVariables
+     */
     resetControlViewVariables() {
         this.isHomeSelected = false;
         this.isProductsSelected = false;

@@ -9,12 +9,14 @@ interface AdminProps {
 }
 
 class AdminPage extends React.Component<AdminProps> {
+    currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
+    isUserAdmin: boolean =  this.currentUser && this.currentUser.type === 'admin' ? true : false;
 
     state = {
         message: '',
-        selectedPage: 'PRODUCTS',
+        selectedPage: this.isUserAdmin ? 'PRODUCTS' : 'ORDERS',
         productsList: [],
-        isProductsPageVisible: true
+        isProductsPageVisible: this.isUserAdmin
     };
 
     componentDidMount() {
@@ -47,12 +49,14 @@ class AdminPage extends React.Component<AdminProps> {
             <div className={'admin-container'}>
                 <section className={'left-section'}>
                     <SettingsNavigationBar
+                        username = { this.currentUser ? this.currentUser.username : 'Unknown user' }
+                        isAdmin = { this.isUserAdmin }
                         onSelectMenuItem = { this.itemSelectedCallback }>
                     </SettingsNavigationBar>
                 </section>
                 <section className={'right-section'}>
                     {
-                        this.state.isProductsPageVisible
+                        this.state.isProductsPageVisible && this.isUserAdmin
                             ?   <ProductsPage
                                     onModalToggle = {this.modalToggledCallback}>
                                 </ProductsPage>

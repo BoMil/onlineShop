@@ -29,12 +29,12 @@ import { RegisterComponent } from './register/register.component';
 
 // Routes setup
 const appRoutes: Routes = [
-    // { path: 'login', component: LoginComponent },
-    // { path: 'register', component: RegisterComponent },
-    // // Routes that are protected
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     { path: 'products', component: ProductsPageComponent },
     { path: 'home', component: HomePageComponent },
-    { path: 'admin', component: ReactBidirectionalRendererComponent },
+    // Routes that are protected
+    { path: 'admin', component: ReactBidirectionalRendererComponent, canActivate: [AuthGuard] },
     // { path: 'tables', component: TablesComponent, canActivate: [AuthGuard] },
     // { path: 'settings', component: UserSettingsComponent, canActivate: [AuthGuard] },
 
